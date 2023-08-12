@@ -12,7 +12,7 @@ export class FoodService {
     return [{
       id: 1,
       price: 30,
-      name: 'coockies',
+      name: 'sopa',
       favorite: false,
       star: 3.5,
       tags: ['fastfood', 'hamburger'],
@@ -23,7 +23,7 @@ export class FoodService {
     {
       id: 1,
       price: 30,
-      name: 'coockies',
+      name: 'coxinha',
       favorite: true,
       star: 5,
       tags: ['fastfood', 'hamburger'],

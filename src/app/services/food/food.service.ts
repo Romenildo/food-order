@@ -22,7 +22,7 @@ export class FoodService {
       origins: ['hermany', 'us'],
     },
     {
-      id: 1,
+      id: 2,
       price: 30,
       name: 'coxinha',
       favorite: true,
@@ -33,6 +33,10 @@ export class FoodService {
       origins: ['hermany', 'us'],
     },
     ]
+  }
+
+  getFoodById(id:number):Foods{
+    return this.getAll().find(food => food.id == id)!
   }
 
   getAllTag():Tag[]{
@@ -47,7 +51,6 @@ export class FoodService {
     return tag == 'all' ?
       this.getAll() :
       this.getAll().filter(food => food.tags?.includes(tag))
-
   }
 
 

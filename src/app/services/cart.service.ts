@@ -33,9 +33,10 @@ export class CartService {
   }
 
   changeQuantity(quantity: number, foodId:number):void{
-    let cardItem = this.cart.items.find(item => item.food.id === foodId)
+    let cardItem = this.cart.items.find(item => item.food.id == foodId)
     if(!cardItem)return
 
+    
     cardItem.quantity = quantity
   }
 

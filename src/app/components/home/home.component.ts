@@ -4,6 +4,7 @@ import { Foods } from 'src/app/shared/models/food';
 
 
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -15,14 +16,19 @@ export class HomeComponent implements OnInit {
   constructor(private fs:FoodService, private router:ActivatedRoute){}
 
   ngOnInit(): void {
+
+    let foodObservable:Observable<Foods[]>
     this.router.params.subscribe(params=>{
       if(params['searchItem']){
-        this.foods = this.fs.getAll().filter(food=> food.name.toLowerCase().includes(params['searchItem'].toLowerCase()))
+        foodObservable = this.fs.getAllFoodsBySearchTerm(params['searchItem'])
       } else if(params['tag']){
-        this.foods = this.fs.getAllFoodByTag(params['tag'])
+        foodObservable = this.fs.getAllFoodByTag(params['tag'])
       }else{
-        this.foods = this.fs.getAll()
+        foodObservable = this.fs.getAll()
       }
+      foodObservable.subscribe(serverFoods =>{
+        this.foods = serverFoods
+      })
     })
   }
 

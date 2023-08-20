@@ -6,7 +6,7 @@
 /out-tsc
 /bazel-out
 
-# Node
+# Noderomenildo do vle ferrei
 /node_modules
 npm-debug.log
 yarn-error.log
